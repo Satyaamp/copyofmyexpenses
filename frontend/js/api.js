@@ -1,6 +1,6 @@
 const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
   ? "http://localhost:5000/api"
-  : "https://my-expenses-gryf.onrender.com/api";
+  : "https://copyofmyexpensesbackend.onrender.com/api";
 
 // Inject Global Loader CSS
 const loaderStyle = document.createElement('style');
