@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dhan₹ekha – Monthly Summary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="shortcut icon" href="assets/logo1.png" type="image/png">
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/monthly.css" />
+
+  <style>
+    /* =========================================
+       NAVBAR RESPONSIVENESS & GLASS ICONS
+    ========================================= */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* --- DESKTOP VIEW (Default) --- */
+    .nav-btn {
+      padding: 8px 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: rgba(93, 153, 184, 0.964); /* Subtle bg */
+      color: inherit;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .mobile-icon { display: none; } /* Hide icons on desktop */
+
+    /* --- MOBILE VIEW (Max Width 768px) --- */
+    @media (max-width: 768px) {
+      /* Hide elements not needed on mobile */
+      .desktop-only, .desktop-text {
+        display: none;
+      }
+
+      .mobile-icon {
+        display: inline-block;
+      }
+
+      /* GLASSY ICON STYLE 
+         Turns buttons into frosted glass tiles 
+      */
+      .nav-btn {
+        width: 42px;
+        height: 42px;
+        padding: 0; 
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        /* Glass Effect */
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 12px; /* Soft rounded corners like iOS */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        font-size: 1.2rem;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .nav-btn:active {
+        transform: scale(0.92); /* Click press effect */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar glass-card">
+  <div class="logo">
+    <img src="assets/logo1.png" alt="Dhan₹ekha Logo" />
+    <span>Dhan₹ekha</span>
+  </div>
+
+  <div class="nav-actions">
+    <input type="month" id="monthPicker" class="desktop-only">
+    
+    
+    <button onclick="location.href='dashboard.html'" class="nav-btn" title="Dashboard">
+      <span class="desktop-text">Dashboard</span>
+      <span class="mobile-icon">🏠</span>
+    </button>
+  </div>
+</nav>
+
+<main class="container">
+
+  <section class="summary">
+    <div class="summary-card glass-card">
+      <h4>Budget Limit</h4>
+      <p id="monthlyIncome">₹0</p>
+    </div>
+    <div class="summary-card glass-card">
+      <h4>Expenses</h4>
+      <p id="monthlyExpense">₹0</p>
+    </div>
+    <div class="summary-card glass-card">
+      <h4>Remaining Balance</h4>
+      <p id="monthlyBalance">₹0</p>
+    </div>
+  </section>
+
+  <section class="mobile-date-view glass-card">
+    <div class="mobile-month-inline" id="mobileMonthSwipe">
+      <span class="month-icon">📅</span>
+      <span id="mobileMonthText" class="month-text"></span>
+    </div>
+
+    <input
+      type="number"
+      id="mobile-day-input"
+      placeholder="Search by day (1–31)"
+      min="1"
+      max="31"
+    />
+
+    <div id="mobile-transaction-list">
+      <p class="text-muted">Enter a day to see transactions</p>
+    </div>
+  </section>
+
+  <section class="expense-list glass-card">
+    <h3>Expenses by Category</h3>
+    <div id="expenseHistogram"></div>
+  </section>
+
+  <section class="date-wise glass-card desktop-calendar-view">
+    <h3>Transactions by Date</h3>
+    <div id="dateWiseList"></div>
+  </section>
+
+</main>
+
+<link rel="stylesheet" href="css/aiChat.css">
+<script src="js/aiChat.js"></script>
+
+<script type="module" src="js/monthly.js"></script>
+</body>
+</html>
